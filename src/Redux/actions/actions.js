@@ -6,3 +6,8 @@ export const click = (count) => {
         count
     }
 }
+export const getNews = () => {
+    return {
+        type: actionTypes.GET_NEWS
+    }
+}

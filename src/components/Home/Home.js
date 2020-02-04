@@ -8,14 +8,19 @@ class Home extends Component {
         const { count } = this.props.data
         this.props.onClick({ count: count + 1 });
     }
+    onGetNews = () => {
+        this.props.onGetNews();
+    }
     render() {
         const { data } = this.props;
+        console.log("data: ", data);
         return (
             <div >
                 <p className="home">
                     Count: {data.count}
                 </p>
                 <button className="btn btn-primary" onClick={this.onClick}>Click</button>
+                <button className="btn btn-primary" onClick={this.onGetNews}>Get news</button>
             </div>
         );
     }
@@ -31,6 +36,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onClick: (count) => {
             dispatch(actions.click(count))
+        },
+        onGetNews: () => {
+            dispatch(actions.getNews())
         }
     }
 }
