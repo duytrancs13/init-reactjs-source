@@ -1,46 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Home.scss';
-import { connect } from 'react-redux';
-import * as actions from '../../Redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux';
+import {requestFetchHomePage} from '../../redux/actions/pages/home';
 
-class Home extends Component {
-    onClick = () => {
-        const { count } = this.props.data
-        this.props.onClick({ count: count + 1 });
+const Home = () => {
+    const dispatch = useDispatch();
+    const homeData = useSelector((state) => state);
+    const onFetch = () => {
+        dispatch(requestFetchHomePage());
     }
-    onGetNews = () => {
-        this.props.onGetNews();
-    }
-    render() {
-        const { data } = this.props;
-        console.log("data: ", data);
-        return (
-            <div >
-                <p className="home">
-                    Count: {data.count}
-                </p>
-                <button className="btn btn-primary" onClick={this.onClick}>Click</button>
-                <button className="btn btn-primary" onClick={this.onGetNews}>Get news</button>
-            </div>
-        );
-    }
+    console.log("state: ", homeData);
+    return (
+        <button className="btn btn-primary" onClick={onFetch}>Fetch</button>
+    );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        data: state.data
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onClick: (count) => {
-            dispatch(actions.click(count))
-        },
-        onGetNews: () => {
-            dispatch(actions.getNews())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

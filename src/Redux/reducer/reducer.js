@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import data from './data';
+import home from './pages/home';
 
 const myCombineReducers = combineReducers({
-    data
+    home
 })
 
 export default myCombineReducers;
