@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
 import home from './pages/home';
+import { combineReducers } from 'redux';
 
 const myCombineReducers = combineReducers({
     home
