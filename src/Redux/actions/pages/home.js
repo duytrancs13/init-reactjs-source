@@ -1,15 +1,17 @@
-import * as actionTypes from '../../constant/pages/home';
+export const REQUEST_FETCH_HOME_PAGE = 'REQUEST_FETCH_HOME_PAGE';
+export const FETCH_HOME_PAGE_ON_SUCCESS = 'FETCH_HOME_PAGE_ON_SUCCESS';
+export const FETCH_HOME_PAGE_ON_ERROR = 'FETCH_HOME_PAGE_ON_ERROR';
 
 export const requestFetchHomePage = () => ({
-    type: actionTypes.REQUEST_FETCH_HOME_PAGE
+    type: `REQUEST_FETCH_HOME_PAGE`
 })
 
 export const fetchHomePageOnSuccess = (home) => ({
-    type: actionTypes.FETCH_HOME_PAGE_ON_SUCCESS,
+    type: FETCH_HOME_PAGE_ON_SUCCESS,
     home
 })
 
 export const fetchHomePageOnError = (error) => ({
-    type: actionTypes.FETCH_HOME_PAGE_ON_ERROR,
+    type: FETCH_HOME_PAGE_ON_ERROR,
     error
 })

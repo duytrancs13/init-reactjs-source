@@ -1,29 +1,30 @@
-import { REQUEST_FETCH_HOME_PAGE, FETCH_HOME_PAGE_ON_SUCCESS, FETCH_HOME_PAGE_ON_ERROR } from '../../actions/pages/home';
 
+import { AUTH_LOGIN, AUTH_LOGIN_ON_SUCCESS, AUTH_LOGIN_ON_ERROR } from './../../actions/pages/login';
 const defaultState = {
-    data: [],
+    loggedIn: false,
     error: false,
     loading: false
 }
 
 export default (state = defaultState, action) => {
     switch(action.type) {
-        case REQUEST_FETCH_HOME_PAGE:
+        case AUTH_LOGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_HOME_PAGE_ON_SUCCESS: 
-        console.log(action);
+        case AUTH_LOGIN_ON_SUCCESS: 
             return {
                 ...state,
-                data: action.home,
+                loggedIn: true,
+                error: false,
                 loading: false
             };
-        case FETCH_HOME_PAGE_ON_ERROR: 
+        case AUTH_LOGIN_ON_ERROR: 
             return {
                 ...state,
-                news: action.error,
+                loggedIn: false,
+                error: action.error,
                 loading: false
             }
         default:
